@@ -1,12 +1,10 @@
 [
-  {
-    "text": "Hi there!",
-    "user": "Amando",
-    "added": "021-12-30T19:13:39.850Z"
-  },
+  { "text": "Hi there!", "user": "Amando", "date": "2021-12-31T11:25:07.324Z" },
   {
     "text": "Hello World!",
     "user": "Charles",
-    "added": "021-12-30T19:13:39.850Z"
-  }
+    "date": "2021-12-31T11:25:07.324Z"
+  },
+  { "text": "test1", "user": "test2", "date": "2021-12-31T11:42:01.135Z" },
+  { "text": "It", "user": "Works", "date": "2021-12-31T11:42:41.919Z" }
 ]
