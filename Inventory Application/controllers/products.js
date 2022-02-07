@@ -29,7 +29,7 @@ const createProduct = async (req, res) => {
   }
 };
 
-const updateProduct = (req, res) => {
+const updateProduct = async (req, res) => {
   try {
     const { id, name, description, url } = req.body;
     const oldProduct = await Product.findPyPk(id);
