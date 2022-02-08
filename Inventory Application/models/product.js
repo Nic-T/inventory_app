@@ -25,11 +25,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       price: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       stock: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       url: { type: DataTypes.STRING, allowNull: false },
