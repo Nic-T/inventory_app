@@ -21,8 +21,15 @@ const getProduct = async (req, res) => {
 
 const createProduct = async (req, res) => {
   try {
-    const { name, description, url } = req.body;
-    const newProduct = await Product.create({ name, description, url });
+    const { name, description, url, price, category, stock } = req.body;
+    const newProduct = await Product.create({
+      name,
+      description,
+      url,
+      price,
+      category,
+      stock,
+    });
     res.json(newProduct);
   } catch (err) {
     console.error(err);
@@ -31,13 +38,16 @@ const createProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   try {
-    const { name, description, url } = req.body;
+    const { name, description, url, price, category, stock } = req.body;
     const id = req.params.id;
     const updatedProduct = await Product.update(
       {
         description: description,
         name: name,
         url: url,
+        price: price,
+        category: category,
+        stock: stock,
       },
       {
         where: {
