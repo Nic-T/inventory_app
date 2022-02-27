@@ -31,6 +31,11 @@ let products = getProducts();
     
     {#each products as product}
         <h1> {product.name}</h1>
+        <h3> {product.description}</h3>
+        <h3> {product.category}</h3>
+        <p> {product.price}</p>
+        <p> {product.stock}</p>
+        <p> {product.url}</p>
     {/each}
     
     {:catch error}
