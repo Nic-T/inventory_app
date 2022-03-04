@@ -10,7 +10,7 @@
     
     async function postData(){
          
-        const res = await fetch(`http://localhost:3000/api/products`, {
+        const res = await fetch(`http://localhost:3100/api/products`, {
             method:'POST',
             mode: 'cors',
             
@@ -19,7 +19,7 @@
                 'Accept': 'application/json',
                 
             },
-            origin: 'http://localhost:3000',
+            origin: 'http://localhost:3100',
             body: JSON.stringify({name:name, description:description, category:category,price:price,stock:stock,url:url}),
         });
         return res.json();

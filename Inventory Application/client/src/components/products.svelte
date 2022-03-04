@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     let products = getProducts();
         async function getProducts() {
-            const res = await fetch(`http://localhost:3000/api/products`)
+            const res = await fetch(`http://localhost:3100/api/products`)
             const product = await res.json();
             
             if (res.ok){
