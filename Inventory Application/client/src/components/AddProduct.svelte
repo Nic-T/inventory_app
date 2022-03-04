@@ -8,11 +8,8 @@
     let url;
     
     
-
     async function postData(){
          
-
-
         const res = await fetch(`http://localhost:3000/api/products`, {
             method:'POST',
             mode: 'cors',
@@ -27,7 +24,6 @@
         });
         return res.json();
     }
-
 </script>
 
 <main>
