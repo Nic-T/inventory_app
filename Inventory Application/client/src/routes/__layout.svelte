@@ -40,13 +40,15 @@ import AddButton from '../components/buttons/AddProductButton.svelte'
 <main>
     <slot/>
 
+    <AddButton/>
+
+    <div class="absolute right-0 bottom-0 m-4 flex space-x-6 ">
+        <ViewButton/>
+
+        <EditButton/>
+
+        <DeleteProduct id={$selectedId}/>
+    </div>
     
 </main>
 
-<AddButton/>
-
-<ViewButton/>
-
-<EditButton/>
-
-<DeleteProduct id={$selectedId}/>
