@@ -13,6 +13,6 @@ import {selected} from "../../stores/productSelectionStore"
 
 
 
-<button on:click="{editSelection}" disabled={$selected == false}>
-    Edit
+<button class="bg-cyan-400 text-white rounded p-2 flex justify-center items-center" on:click="{editSelection}" disabled={$selected == false}>
+    <p>Edit</p>
 </button>

@@ -22,6 +22,6 @@
 
 </script>
 
-<button on:click="{deleteProduct}" disabled={$selected == false}>
+<button class="bg-cyan-400 text-white rounded  p-2 flex justify-center items-center" on:click="{deleteProduct}" disabled={$selected == false}>
     Delete
 </button>

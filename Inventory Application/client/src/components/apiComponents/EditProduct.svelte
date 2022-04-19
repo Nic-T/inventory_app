@@ -63,7 +63,7 @@
         <input class="rounded p-1 text-gray-900" type="number" name="price" placeholder={product.price} bind:value={price}>
         <input class="rounded p-1 text-gray-900" type="number" name="stock" placeholder={product.stock} bind:value={stock}>
         <input class="rounded p-1 text-gray-900" type="url" name="url" placeholder={product.url} bind:value={url}>
-        <button class="rounded p-2 bg-cyan-500	text-white mt-4" type="submit">Edit Product</button>
+        <button class="rounded p-2 bg-cyan-400	text-white mt-4" type="submit">Edit Product</button>
     </form>
 
     {:catch error}
