@@ -1,7 +1,7 @@
 
 <script>
 import { editProductOverlay } from "../../stores/OverlayStore";
-
+import {selected} from "../../stores/productSelectionStore"
 
 
     function editSelection() {
@@ -13,6 +13,6 @@ import { editProductOverlay } from "../../stores/OverlayStore";
 
 
 
-<button on:click="{editSelection}">
+<button on:click="{editSelection}" disabled={$selected == false}>
     Edit
 </button>

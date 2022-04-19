@@ -8,7 +8,7 @@
         }   
     
     </script>
-    <button on:click="{addSelection}">
+    <button on:click="{addSelection}" >
         Add
     </button>
     

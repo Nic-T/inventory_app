@@ -1,7 +1,7 @@
 
 <script>
 import { viewProductOverlay } from "../../stores/OverlayStore";
-
+import {selected} from "../../stores/productSelectionStore"
 
     function viewSelection() {
         viewProductOverlay.set(true)
@@ -12,6 +12,6 @@ import { viewProductOverlay } from "../../stores/OverlayStore";
 
 
 
-<button on:click="{viewSelection}">
+<button on:click="{viewSelection}" disabled={$selected == false}>
     View
 </button>
