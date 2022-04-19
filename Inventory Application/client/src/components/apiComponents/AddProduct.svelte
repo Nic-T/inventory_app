@@ -32,14 +32,14 @@
 
 <div>
 
-    <form on:submit|preventDefault={postData}>
-        <input type="text" name="name" placeholder="name" bind:value={name}>
-        <input type="text" name="description" placeholder="description" bind:value={description}>
-        <input type="text" name= "category" placeholder="category" bind:value={category}>
-        <input type="number" name="price" placeholder="price" bind:value={price}>
-        <input type="number" name="stock" placeholder="stock" bind:value={stock}>
-        <input type="url" name="url" placeholder="url" bind:value={url}>
-        <button type="submit">Add Product</button>
+    <form class="flex flex-col space-y-4 p-2" on:submit|preventDefault={postData}>
+        <input class="rounded p-1 text-gray-900" type="text" name="name" placeholder="name" bind:value={name}>
+        <input class="rounded p-1 text-gray-900" type="text" name="description" placeholder="description" bind:value={description}>
+        <input class="rounded p-1 text-gray-900" type="text" name= "category" placeholder="category" bind:value={category}>
+        <input class="rounded p-1 text-gray-900" type="number" name="price" placeholder="price" bind:value={price}>
+        <input class="rounded p-1 text-gray-900" type="number" name="stock" placeholder="stock" bind:value={stock}>
+        <input class="rounded p-1 text-gray-900" type="url" name="url" placeholder="url" bind:value={url}>
+        <button class="rounded p-2 bg-cyan-500	text-white mt-4" type="submit">Add Product</button>
     </form>
 
 </div>

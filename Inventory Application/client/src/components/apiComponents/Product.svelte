@@ -21,19 +21,21 @@
 
 </script>
 
-<main>
+<main >
 
     {#await product}
     <p>wait</p>
 
     {:then product}
-
-    <h1> {product.name}</h1>
-    <h3> {product.description}</h3>
-    <h3> {product.category}</h3>
-    <p> {product.price}</p>
-    <p> {product.stock}</p>
-    <p> {product.url}</p>
+    <div class="flex flex-col space-y-4 p-2">
+        <h2 class="rounded p-1 text-white">{product.name}</h2>
+        <h2 class="rounded p-1 text-white">{product.description}</h2>
+        <h2 class="rounded p-1 text-white">{product.category}</h2>
+        <h2 class="rounded p-1 text-white">{product.price}</h2>
+        <h2 class="rounded p-1 text-white">{product.stock}</h2>
+        <h2 class="rounded p-1 text-white">{product.url}</h2>
+    </div>
+    
 
     {:catch error}
     <p>{error.message}</p>

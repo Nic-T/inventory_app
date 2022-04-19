@@ -1,9 +1,10 @@
 <script>
     import {onMount} from 'svelte';
     import {dataStore} from '../../stores/dataStore'; 
+    import {selected} from '../../stores/productSelectionStore'
     export let id;
     async function deleteProduct(){
-
+        selected.set(false)
         await fetch(`http://localhost:3100/api/products/${id}`,{
             method: 'DELETE',
             headers: {
@@ -21,6 +22,6 @@
 
 </script>
 
-<button on:click="{deleteProduct}">
+<button on:click="{deleteProduct}" disabled={$selected == false}>
     Delete
 </button>
