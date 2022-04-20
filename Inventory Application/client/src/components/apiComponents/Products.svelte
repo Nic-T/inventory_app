@@ -32,21 +32,20 @@
 
     </script>
     
-    <main>
+    <main class="flex space-x-2">
         {#await products}
         <p>await</p>
     
         {:then products}
         
         {#each products as product}
-        <div on:click ={selectProduct(product.id)}>
-            <h1> {product.id}</h1>
-            <h1> {product.name}</h1>
-            <h3> {product.description}</h3>
-            <h3> {product.category}</h3>
-            <p> {product.price}</p>
-            <p> {product.stock}</p>
-            <p> {product.url}</p>
+        <div class="bg-blue-600 w-60 h-80 m-2 rounded p-2  relative z-0 active:-translate-y-1 transition-transform" on:click ={selectProduct(product.id)}>
+            <h1 class="flex justify-center" > {product.name}</h1>
+            <div class="absolute bottom-1 left-0 flex w-full justify-between">
+                <p class="ml-2"> {product.price}</p>
+                <p class="mr-2"> {product.stock}</p>   
+            </div>
+            
         </div>
             
         {/each}
