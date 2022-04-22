@@ -1,8 +1,8 @@
 "use strict";
 const { Model } = require("sequelize");
-const { isUrl } = require("validator");
+const { isEmail } = require("validator");
 module.exports = (sequelize, DataTypes) => {
-  class Product extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,37 +12,27 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Product.init(
+  User.init(
     {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-      name: { type: DataTypes.STRING, allowNull: false },
-      description: { type: DataTypes.STRING, allowNull: false },
-      category: {
+      username: { type: DataTypes.STRING, allowNull: false, unique: true },
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: { isEmail: true },
       },
-      price: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      stock: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      url: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { isUrl: true },
-      },
+      password: { type: DataTypes.STRING, allowNull: false },
+      token: { type: DataTypes.STRING },
     },
     {
       sequelize,
-      modelName: "Product",
+      modelName: "User",
     }
   );
-  return Product;
+  return User;
 };
