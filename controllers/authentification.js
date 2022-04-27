@@ -33,6 +33,8 @@ const login = async (req, res) => {
 
     if (match) {
       let tokens = jwtTokens(user);
+      refreshToken = tokens.refreshToken;
+      await user.update({ token: refreshToken });
       res.cookie("refreshToken", tokens.refreshToken, { httpOnly: true });
       res.json(tokens.accessToken);
     }
@@ -44,6 +46,7 @@ const login = async (req, res) => {
 
 const tokenRefresh = async (req, res) => {
   try {
+    const oldToken = req.cookies.refreshToken;
     const refreshToken = req.cookies.refreshToken;
     if (refreshToken === null)
       return res.status(401).json({ error: "Null refresh token" });
@@ -53,11 +56,16 @@ const tokenRefresh = async (req, res) => {
       (error, user) => {
         if (error) return res.status(403).json({ error: error.message });
         let tokens = jwtTokens(user);
+        User.update(
+          { token: tokens.refreshToken },
+          {
+            where: { token: oldToken },
+          }
+        );
         res.cookie("refreshToken", tokens.refreshToken, { httpOnly: true });
         res.json(tokens.accessToken);
       }
     );
-    res.json(refreshToken, accessToken);
   } catch (err) {
     console.error(err);
     res.json("error");
