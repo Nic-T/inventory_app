@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
         validate: { isEmail: true },
       },
       password: { type: DataTypes.STRING, allowNull: false },
-      token: { type: DataTypes.STRING },
+      token: { type: DataTypes.TEXT },
+      role: { type: DataTypes.STRING, defaultValue: "member" },
     },
     {
       sequelize,
