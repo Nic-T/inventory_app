@@ -1,6 +1,8 @@
 <script>
     import {dataStore} from '../../stores/dataStore'; 
     import {onMount} from 'svelte';
+    import { tokenStore } from '../../stores/tokenStore';
+    import refreshToken from './refreshToken.svelte'
     let name;
     let description;
     let category;
@@ -16,6 +18,7 @@
         if (res.ok){
             return product;
         } else{
+            refreshToken();
             throw new Error(json)
         }
     }
@@ -40,6 +43,7 @@
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
+                'Authorization': `Bearer ${$tokenStore}`,
             },
             origin: 'http://localhost:3100',
             body: JSON.stringify({name:name, desciption:description,category:category,price:price,stock:stock,url:url}),

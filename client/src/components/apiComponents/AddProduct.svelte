@@ -1,6 +1,8 @@
 <script>
     
     import {dataStore} from '../../stores/dataStore'; 
+    import { tokenStore } from '../../stores/tokenStore';
+    import refreshToken from './refreshToken.svelte'
 
     let name;
     let description;
@@ -8,24 +10,35 @@
     let price;
     let stock;
     let url;
-    
-    
+    let token;
+
+    tokenStore.subscribe(value =>{
+        token = value;
+    })
+
+    let bearerToken = `Bearer ${token}`;
+
+
     async function postData(){
-        
+        try {
         const res = await fetch(`http://localhost:3100/api/products`, {
             method:'POST',
-            mode: 'cors',
-            
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                
+                "Accept": "*/*",
+                "Authorization": bearerToken,
             },
-            origin: 'http://localhost:3100',
+            
             body: JSON.stringify({name:name, description:description, category:category,price:price,stock:stock,url:url}),
         });
         dataStore.update(n=> n+1);
         return res.json();
+        } catch (err) {
+            refreshToken();
+            console.error(err);
+            
+        }
+        
         
     }
 </script>

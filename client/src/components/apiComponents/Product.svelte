@@ -1,6 +1,6 @@
 <script>
     import {onMount} from 'svelte';
-
+    import refreshToken from './refreshToken.svelte'
     export let id;
 
     let product = getProduct();
@@ -11,6 +11,7 @@
         if (res.ok){
             return product;
         } else{
+            refreshToken();
             throw new Error(json)
         }
     }

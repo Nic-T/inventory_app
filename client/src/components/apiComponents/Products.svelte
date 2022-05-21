@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { dataStore } from '../../stores/dataStore'
     import { selected, selectedId } from '../../stores/productSelectionStore'
-
+    import refreshToken from './refreshToken.svelte'
     let products = getProducts();
         async function getProducts() {
             const res = await fetch(`http://localhost:3100/api/products`)
@@ -11,6 +11,7 @@
             if (res.ok){
             return product;
         } else{
+            refreshToken();
             throw new Error(json)
             }
         }

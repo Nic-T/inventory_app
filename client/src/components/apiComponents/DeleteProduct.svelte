@@ -2,9 +2,11 @@
     import {onMount} from 'svelte';
     import {dataStore} from '../../stores/dataStore'; 
     import {selected} from '../../stores/productSelectionStore'
+    import refreshToken from './refreshToken.svelte'
     export let id;
     async function deleteProduct(){
-        selected.set(false)
+        try {
+            selected.set(false)
         await fetch(`http://localhost:3100/api/products/${id}`,{
             method: 'DELETE',
             headers: {
@@ -14,6 +16,11 @@
         });
 
         dataStore.update(n=> n+1);
+        } catch (error) {
+            console.log(error)
+            refreshToken();
+        }
+        
     }
 
     onMount(() =>{
