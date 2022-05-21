@@ -12,8 +12,12 @@ const authRoutes = require("./routes/authentification");
 
 let db = require("./models");
 
+let corsOptions = {
+  origin: "http://localhost:3000",
+};
+
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
