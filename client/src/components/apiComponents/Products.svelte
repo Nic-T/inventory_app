@@ -3,12 +3,16 @@
     import { dataStore } from '../../stores/dataStore'
     import { selected, selectedId } from '../../stores/productSelectionStore'
     import refreshToken from './refreshToken.svelte'
+
+
+
     let products = getProducts();
         async function getProducts() {
             const res = await fetch(`http://localhost:3100/api/products`)
             const product = await res.json();
             
             if (res.ok){
+                console.log(product)
             return product;
         } else{
             refreshToken();
@@ -34,6 +38,7 @@
     </script>
     
     <main class="flex space-x-2">
+        
         {#await products}
         <p>await</p>
     
@@ -41,6 +46,7 @@
         
         {#each products as product}
         <div class="bg-blue-600 w-60 h-80 m-2 rounded p-2  relative z-0 active:-translate-y-1 transition-transform" on:click ={selectProduct(product.id)}>
+            <img crossorigin="anonymous" src={`http://localhost:3100//img/${product.image}`} alt="pic"/>
             <h1 class="flex justify-center" > {product.name}</h1>
             <div class="absolute bottom-1 left-0 flex w-full justify-between">
                 <p class="ml-2"> {product.price}</p>

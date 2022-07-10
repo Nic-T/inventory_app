@@ -20,8 +20,10 @@ const getProduct = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
+  console.log(req.file);
   try {
     const { name, description, url, price, category, stock } = req.body;
+    const image = req.file.filename;
     const newProduct = await Product.create({
       name,
       description,
@@ -29,6 +31,7 @@ const createProduct = async (req, res) => {
       price,
       category,
       stock,
+      image,
     });
     res.json(newProduct);
   } catch (err) {
@@ -48,6 +51,7 @@ const updateProduct = async (req, res) => {
         price: price,
         category: category,
         stock: stock,
+        image: image,
       },
       {
         where: {

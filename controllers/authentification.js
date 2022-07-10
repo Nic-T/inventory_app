@@ -34,9 +34,10 @@ const login = async (req, res) => {
     if (match) {
       let tokens = jwtTokens(user);
       refreshToken = tokens.refreshToken;
+      accessToken = tokens.accessToken;
       await user.update({ token: refreshToken });
       res.cookie("refreshToken", tokens.refreshToken, { httpOnly: true });
-      res.json(tokens.accessToken);
+      res.send(accessToken);
     }
   } catch (err) {
     console.error(err);

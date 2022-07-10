@@ -10,7 +10,8 @@ import EditButton from "../components/buttons/EditButton.svelte";
 import Product from '../components/apiComponents/Product.svelte'
 import ViewButton from "../components/buttons/ViewButton.svelte";
 import DeleteProduct from "../components/apiComponents/DeleteProduct.svelte";
-import AddButton from '../components/buttons/AddProductButton.svelte'
+import AddButton from '../components/buttons/AddProductButton.svelte';
+import { tokenStore } from '../stores/tokenStore';
 
 </script>
 
@@ -37,10 +38,17 @@ import AddButton from '../components/buttons/AddProductButton.svelte'
 
 {/if}
 
-<main>
-    <slot/>
 
-    <AddButton/>
+
+<main>
+
+   {#if !$tokenStore}
+        <slot/>
+   {/if}
+
+   {#if $tokenStore}
+        <slot/>
+        <AddButton/>
 
     <div class="absolute right-0 bottom-0 m-4 flex space-x-6 ">
         <ViewButton/>
@@ -49,6 +57,9 @@ import AddButton from '../components/buttons/AddProductButton.svelte'
 
         <DeleteProduct id={$selectedId}/>
     </div>
+   {/if}
+
+    
     
 </main>
 

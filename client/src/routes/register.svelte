@@ -1,8 +1,14 @@
 <script>
-
+    import {tokenStore} from '../stores/tokenStore'
+    import { goto } from '$app/navigation';
     let username;
     let password;
     let email;
+
+
+    if($tokenStore){
+        goto('/')
+    }
 
     async function register() {
 
@@ -17,6 +23,7 @@
             origin: 'http://localhost:3100',
             body: JSON.stringify({username:username, password:password, email:email})
         });
+        goto('/login')
         return res.json(res)
 
     }

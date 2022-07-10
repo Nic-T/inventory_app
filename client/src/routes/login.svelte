@@ -4,7 +4,12 @@
     let username;
     let password;
 
-        function login() {
+    console.log($tokenStore)
+    if($tokenStore){
+        goto('/')
+    }
+
+    function login() {
 
         const res = fetch(`http://localhost:3100/api/authentification/login`, {
             method: 'POST',
@@ -19,7 +24,9 @@
         }).then(function(response) {
             return response.text();
             }).then(function(data) {
+                console.log(data)
                 tokenStore.set(data);
+                console.log($tokenStore)
                 })
                 goto('/') 
     }
